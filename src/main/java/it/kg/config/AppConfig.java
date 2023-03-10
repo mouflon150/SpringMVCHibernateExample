@@ -23,6 +23,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan("it.kg")
 public class AppConfig implements WebMvcConfigurer {
+
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();

@@ -12,8 +12,8 @@ public class StudentsController {
 }
 //    @GetMapping("/")
 //    public String findAll(Model model) {
-//        model.addAttribute("all", studentRepository.findAll());
-//        return "find all";
+//        model.addAttribute("companies", studentRepository.findAll());
+//        return "find companies";
 //    }
 //
 //    @PostMapping("/saveStudent")

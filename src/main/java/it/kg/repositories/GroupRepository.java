@@ -1,20 +1,21 @@
 package it.kg.repositories;
 
 
-import it.kg.models.Groups;
+import it.kg.models.Group;
 
 import java.util.List;
 
 public interface GroupRepository {
-    List<Groups> findAll();
 
-    Groups findById(int id);
+    List<Group> findAll();
 
-    void save(Groups groups);
+    Group findById(int id);
+
+    void save(Group groups);
 
     void delete(int id);
 
-    void updateGroups(int id, Groups groups);
+    void update(int id, Group groups);
 
     void clear();
 }

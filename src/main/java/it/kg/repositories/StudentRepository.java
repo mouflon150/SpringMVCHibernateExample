@@ -6,6 +6,7 @@ import it.kg.models.Student;
 import java.util.List;
 
 public interface StudentRepository {
+
     List<Student> findAll();
 
     Student findById(int id);
@@ -14,7 +15,7 @@ public interface StudentRepository {
 
     void delete(int id);
 
-    void updateStudent(int id, Student student);
+    void update(int id, Student student);
 
     void clear();
 }

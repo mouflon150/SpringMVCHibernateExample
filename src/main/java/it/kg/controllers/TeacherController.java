@@ -11,8 +11,8 @@ public class TeacherController {
 }
 //    @GetMapping("/")
 //    public String findAll(Model model) {
-//        model.addAttribute("all", teacherRepository.findAll());
-//        return "find all";
+//        model.addAttribute("companies", teacherRepository.findAll());
+//        return "find companies";
 //    }
 //
 //    @PostMapping("/saveTeacher")

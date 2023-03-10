@@ -1,6 +1,6 @@
 package it.kg.repositories.impl;
 
-import it.kg.models.Groups;
+import it.kg.models.Group;
 import it.kg.repositories.GroupRepository;
 import jakarta.transaction.Transactional;
 import org.hibernate.Session;
@@ -12,25 +12,25 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class GroupsRepositoryImpl implements GroupRepository {
+public class GroupRepositoryImpl implements GroupRepository {
+
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public List<Groups> findAll() {
+    public List<Group> findAll() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("select c from Groups c", Groups.class).getResultList();
-
+        return session.createQuery("select c from Group c", Group.class).getResultList();
     }
 
     @Override
-    public Groups findById(int id) {
+    public Group findById(int id) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(Groups.class, id);
+        return session.get(Group.class, id);
     }
 
     @Override
-    public void save(Groups groups) {
+    public void save(Group groups) {
         Session session = sessionFactory.getCurrentSession();
         session.save(groups);
     }
@@ -38,14 +38,13 @@ public class GroupsRepositoryImpl implements GroupRepository {
     @Override
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
-        session.createQuery("delete from Groups where id=:groupsId").setParameter("groupsId", id).executeUpdate();
-
+        session.createQuery("delete from Group where id=:groupId").setParameter("groupId", id).executeUpdate();
     }
 
     @Override
-    public void updateGroups(int id, Groups groups) {
+    public void update(int id, Group groups) {
         Session session = sessionFactory.getCurrentSession();
-        Groups groups1 = findById(id);
+        Group groups1 = findById(id);
         groups1.setGroupName(groups1.getGroupName());
         groups1.setDateOfStart(groups1.getDateOfStart());
         groups1.setDateOfFinish(groups1.getDateOfFinish());
@@ -55,7 +54,6 @@ public class GroupsRepositoryImpl implements GroupRepository {
     @Override
     public void clear() {
         Session session = sessionFactory.getCurrentSession();
-        session.createQuery("delete from Groups ").executeUpdate();
-
+        session.createQuery("delete from Group ").executeUpdate();
     }
 }

@@ -6,6 +6,7 @@ import it.kg.models.Company;
 import java.util.List;
 
 public interface CompanyRepository {
+
     List<Company> findAll();
 
     Company findById(int id);
@@ -14,7 +15,7 @@ public interface CompanyRepository {
 
     void delete(int id);
 
-    void updateCompany(int id, Company company);
+    void update(int id, Company company);
 
     void clear();
 

@@ -12,8 +12,8 @@ public class GroupsController {
 }
 //    @GetMapping("/")
 //    public String findAll(Model model) {
-//        model.addAttribute("all", groupsRepository.findAll());
-//        return "find all";
+//        model.addAttribute("companies", groupsRepository.findAll());
+//        return "find companies";
 //    }
 //
 //    @PostMapping("/saveGroups")

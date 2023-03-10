@@ -39,11 +39,10 @@ public class CourseRepositoryImpl implements CourseRepository {
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from Course where id=:courseId").setParameter("courseId", id).executeUpdate();
-
     }
 
     @Override
-    public void updateCourse(int id, Course course) {
+    public void update(int id, Course course) {
         Session session = sessionFactory.getCurrentSession();
         Course course1 = findById(id);
         course1.setCourseName(course1.getCourseName());
@@ -55,6 +54,5 @@ public class CourseRepositoryImpl implements CourseRepository {
     public void clear() {
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from Course ").executeUpdate();
-
     }
 }

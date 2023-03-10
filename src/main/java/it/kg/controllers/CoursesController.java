@@ -12,7 +12,7 @@ public class CoursesController {
 }
 //    @GetMapping("/")
 //    public String findAll(Model model) {
-//        model.addAttribute("all", courseRepository.findAll());
+//        model.addAttribute("companies", courseRepository.findAll());
 //        return "companymainpage";
 //    }
 //

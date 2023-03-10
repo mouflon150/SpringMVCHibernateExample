@@ -13,6 +13,7 @@ import java.util.List;
 @Repository
 @Transactional
 public class TeacherRepositoryImpl implements TeacherRepository {
+
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -20,14 +21,12 @@ public class TeacherRepositoryImpl implements TeacherRepository {
     public List<Teacher> findAll() {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("select c from Teacher c", Teacher.class).getResultList();
-
     }
 
     @Override
     public Teacher findById(int id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Teacher.class, id);
-
     }
 
     @Override
@@ -40,11 +39,10 @@ public class TeacherRepositoryImpl implements TeacherRepository {
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from Teacher where id=:teacherId").setParameter("teacherId", id).executeUpdate();
-
     }
 
     @Override
-    public void updateTeacher(int id, Teacher teacher) {
+    public void update(int id, Teacher teacher) {
         Session session = sessionFactory.getCurrentSession();
         Teacher teacher1 = findById(id);
         teacher1.setFirstName(teacher1.getFirstName());
@@ -56,7 +54,6 @@ public class TeacherRepositoryImpl implements TeacherRepository {
     public void clear() {
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from Teacher ").executeUpdate();
-
     }
 }
 

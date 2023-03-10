@@ -13,6 +13,7 @@ import java.util.List;
 @Repository
 @Transactional
 public class CompanyRepositoryImpl implements CompanyRepository {
+
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -32,18 +33,16 @@ public class CompanyRepositoryImpl implements CompanyRepository {
     public void save(Company company) {
         Session session = sessionFactory.getCurrentSession();
         session.save(company);
-
     }
 
     @Override
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from Company where id=:companyId").setParameter("companyId", id).executeUpdate();
-
     }
 
     @Override
-    public void updateCompany(int id, Company company) {
+    public void update(int id, Company company) {
         Session session = sessionFactory.getCurrentSession();
         Company company1 = findById(id);
         company1.setCompanyName(company1.getCompanyName());

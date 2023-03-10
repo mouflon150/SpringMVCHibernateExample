@@ -1,33 +1,83 @@
 package it.kg.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 import java.util.List;
 
 @Entity
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
 public class Company {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "company_id")
     private int id;
-    @Column(name = "companyName")
+    @Column(name = "company_name")
     private String companyName;
-    @Column(name = "locatedCountry")
+    @Column(name = "located_country")
     private String locatedCountry;
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Course> courses;
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
-    private List<Groups> groups;
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Group> groups;
 
-    public Company(String companyName, String locatedCountry) {
+    public Company() {
+    }
+
+    public Company(String companyName, String locatedCountry, List<Course> courses, List<Group> groups) {
         this.companyName = companyName;
         this.locatedCountry = locatedCountry;
+        this.courses = courses;
+        this.groups = groups;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getLocatedCountry() {
+        return locatedCountry;
+    }
+
+    public void setLocatedCountry(String locatedCountry) {
+        this.locatedCountry = locatedCountry;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
+    }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", companyName='" + companyName + '\'' +
+                ", locatedCountry='" + locatedCountry + '\'' +
+                ", courses=" + courses +
+                ", groups=" + groups +
+                '}';
     }
 }
