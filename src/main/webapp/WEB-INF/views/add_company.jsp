@@ -11,6 +11,13 @@
     <title>Title</title>
 </head>
 <body>
-
+<h1>Add Company</h1>
+<form action="/addCompany" method="post">
+    <label>Company name:</label>
+    <input type="text" name="companyName">
+    <label>Located country:</label>
+    <input type="text" name="locatedCountry">
+    <input type="submit" value="add_company">
+</form>
 </body>
 </html>

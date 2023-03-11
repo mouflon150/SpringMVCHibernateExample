@@ -31,9 +31,10 @@
     <tbody>
     <c:forEach items="${companies}" var="company">
         <tr>
-            <th scope="row">
             <td>${company.id}</td>
-            <td>${company.companyName}</td>
+            <td>
+                <a href="/findCompany/${company.id}">${company.companyName}</a>
+            </td>
             <td>${company.locatedCountry}</td>
             <td>
                 <form action="/" method="get">
@@ -45,9 +46,15 @@
                     <button type="submit">Group</button>
                 </form>
             </td>
+            <td>
+                <form action="/deleteCompany/${company.id}" method="get">
+                    <button style="background-color: red" type="submit">DELETE</button>
+                </form>
+            </td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
+<a href="/companyForm">ADD-COMPANY</a>
 </body>
 </html>

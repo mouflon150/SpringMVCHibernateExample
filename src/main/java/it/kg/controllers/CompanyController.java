@@ -1,6 +1,5 @@
 package it.kg.controllers;
 
-
 import it.kg.repositories.CompanyRepository;
 import it.kg.models.Company;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class CompanyController {
 
+    @Autowired
     private final CompanyRepository companyRepository;
 
-    @Autowired
     public CompanyController(CompanyRepository companyRepository) {
         this.companyRepository = companyRepository;
     }
@@ -24,12 +23,19 @@ public class CompanyController {
     @GetMapping("/")
     public String findAll(Model model) {
         model.addAttribute("companies", companyRepository.findAll());
-        return "company-list";
+        return "company_list";
+    }
+
+    @GetMapping("/findCompany/{id}")
+    public String findById(Model model, @PathVariable int id) {
+        Company company = companyRepository.findById(id);
+        model.addAttribute("company", company);
+        return "find_company";
     }
 
     @GetMapping("/companyForm")
     public String showForm() {
-        return "add-company";
+        return "add_company";
     }
 
     @PostMapping("/addCompany")
@@ -49,18 +55,11 @@ public class CompanyController {
         return "redirect:/";
     }
 
-    @GetMapping("/find/by/{id}")
-    public String findById(Model model, @PathVariable int id) {
-        Company company = companyRepository.findById(id);
-        model.addAttribute("company", company);
-        return "find-company";
-    }
-
     @GetMapping("/edit/{id}")
     public String updateCompany(@PathVariable("id") int id, Model model) {
         Company company = companyRepository.findById(id);
         model.addAttribute("company", company);
-        return "update-company";
+        return "update_company";
     }
 
     @PostMapping("/updateCompany")
