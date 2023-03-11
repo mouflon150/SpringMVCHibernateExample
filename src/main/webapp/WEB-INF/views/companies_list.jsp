@@ -29,15 +29,15 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${companies}" var="company">
+    <c:forEach items="${companies}" var="course">
         <tr>
-            <td>${company.id}</td>
+            <td>${course.id}</td>
             <td>
-                <a href="/findCompany/${company.id}">${company.companyName}</a>
+                <a href="/findCompany/${course.id}">${course.companyName}</a>
             </td>
-            <td>${company.locatedCountry}</td>
+            <td>${course.locatedCountry}</td>
             <td>
-                <form action="/" method="get">
+                <form action="/courses" method="get">
                     <button type="submit">Course</button>
                 </form>
             </td>
@@ -47,7 +47,10 @@
                 </form>
             </td>
             <td>
-                <form action="/deleteCompany/${company.id}" method="get">
+                <form action="/edit/${course.id}" method="get">
+                    <button style="background-color: blue" type="submit">UPDATE</button>
+                </form>
+                <form action="/deleteCompany/${course.id}" method="get">
                     <button style="background-color: red" type="submit">DELETE</button>
                 </form>
             </td>
@@ -55,6 +58,11 @@
     </c:forEach>
     </tbody>
 </table>
-<a href="/companyForm">ADD-COMPANY</a>
+<form action="${pageContext.request.contextPath}/companyForm" method="get">
+    <button style="background-color: white" type="submit">ADD</button>
+</form>
+<form action="${pageContext.request.contextPath}/clear" method="get">
+    <button style="background-color: white" type="submit">CLEAR</button>
+</form>
 </body>
 </html>

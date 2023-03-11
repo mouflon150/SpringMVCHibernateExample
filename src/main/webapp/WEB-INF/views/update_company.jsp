@@ -9,8 +9,22 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-
+<h1>Update Company</h1>
+<form action="/updateCompany/${company.id}" method="post">
+    <div class="form-group">
+        <label for="companyName">Company name</label>
+        <input class="form-control" name="companyName" id="companyName" aria-describedby="companyName"
+               placeholder="Enter company name">
+    </div>
+    <div class="form-group">
+        <label for="locatedCountry">Located country</label>
+        <input type="text" class="form-control" name="locatedCountry" id="locatedCountry" placeholder="Enter country">
+    </div>
+    <button type="submit" class="btn btn-primary" value="update_company">Submit</button>
+</form>
 </body>
 </html>

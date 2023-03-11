@@ -45,8 +45,8 @@ public class TeacherRepositoryImpl implements TeacherRepository {
     public void update(int id, Teacher teacher) {
         Session session = sessionFactory.getCurrentSession();
         Teacher teacher1 = findById(id);
-        teacher1.setFirstName(teacher1.getFirstName());
-        teacher1.setLastName(teacher1.getLastName());
+        teacher1.setFirstName(teacher.getFirstName());
+        teacher1.setLastName(teacher.getLastName());
         session.merge(teacher1);
     }
 

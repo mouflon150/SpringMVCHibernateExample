@@ -45,8 +45,8 @@ public class CourseRepositoryImpl implements CourseRepository {
     public void update(int id, Course course) {
         Session session = sessionFactory.getCurrentSession();
         Course course1 = findById(id);
-        course1.setCourseName(course1.getCourseName());
-        course1.setDuration(course1.getDuration());
+        course1.setCourseName(course.getCourseName());
+        course1.setDuration(course.getDuration());
         session.merge(course1);
     }
 

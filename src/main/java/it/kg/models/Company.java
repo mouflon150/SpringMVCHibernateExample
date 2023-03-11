@@ -15,9 +15,13 @@ public class Company {
     private String companyName;
     @Column(name = "located_country")
     private String locatedCountry;
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL
+            , fetch = FetchType.LAZY
+    )
     private List<Course> courses;
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL
+            , fetch = FetchType.EAGER
+    )
     private List<Group> groups;
 
     public Company() {

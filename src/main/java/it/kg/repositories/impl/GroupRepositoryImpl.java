@@ -42,13 +42,13 @@ public class GroupRepositoryImpl implements GroupRepository {
     }
 
     @Override
-    public void update(int id, Group groups) {
+    public void update(int id, Group group) {
         Session session = sessionFactory.getCurrentSession();
-        Group groups1 = findById(id);
-        groups1.setGroupName(groups1.getGroupName());
-        groups1.setDateOfStart(groups1.getDateOfStart());
-        groups1.setDateOfFinish(groups1.getDateOfFinish());
-        session.merge(groups1);
+        Group group1 = findById(id);
+        group1.setGroupName(group.getGroupName());
+        group1.setDateOfStart(group.getDateOfStart());
+        group1.setDateOfFinish(group.getDateOfFinish());
+        session.merge(group1);
     }
 
     @Override

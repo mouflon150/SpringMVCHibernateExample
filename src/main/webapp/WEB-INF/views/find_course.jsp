@@ -14,36 +14,36 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">Company</div>
+    <div class="row">Course</div>
 </div>
 <table class="table">
     <thead class="thead-dark">
     <tr>
         <th scope="col">#</th>
-        <th scope="col">Company Name</th>
-        <th scope="col">Located Country</th>
-        <th scope="col">Courses</th>
-        <th scope="col">Groups</th>
+        <th scope="col">Course Name</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Teacher</th>
+        <%--    <th scope="col">Groups</th>--%>
     </tr>
     </thead>
     <tbody>
     <tr>
-        <td>${company.id}</td>
-        <td>${company.companyName}</td>
-        <td>${company.locatedCountry}</td>
-        <td>
-            <form action="/courses" method="get">
-                <button type="submit">Course</button>
-            </form>
-        </td>
+        <td>${course.id}</td>
+        <td>${course.courseName}</td>
+        <td>${course.duration}</td>
         <td>
             <form action="/" method="get">
-                <button type="submit">Group</button>
+                <button type="submit">Teacher</button>
             </form>
         </td>
+<%--        <td>--%>
+<%--            <form action="/" method="get">--%>
+<%--                <button type="submit">Group</button>--%>
+<%--            </form>--%>
+<%--        </td>--%>
     </tr>
     </tbody>
 </table>
-<a href="/">ROLLBACK</a>
+<a href="/courses">ROLLBACK</a>
 </body>
 </html>

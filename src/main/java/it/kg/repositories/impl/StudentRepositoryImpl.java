@@ -44,8 +44,8 @@ public class StudentRepositoryImpl implements StudentRepository {
     public void update(int id, Student student) {
         Session session = sessionFactory.getCurrentSession();
         Student student1 = findById(id);
-        student1.setFirstName(student1.getFirstName());
-        student1.setLastName(student1.getLastName());
+        student1.setFirstName(student.getFirstName());
+        student1.setLastName(student.getLastName());
         session.merge(student1);
     }
 
