@@ -10,11 +10,11 @@ public interface GroupService {
 
     Group findById(int id);
 
-    void save(Group groups);
+    void save(Group group);
 
     void delete(int id);
 
-    void update(int id, Group groups);
+    void update(int id, Group group);
 
     void clear();
 }

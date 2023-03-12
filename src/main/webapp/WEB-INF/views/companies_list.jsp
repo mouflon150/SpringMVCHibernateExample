@@ -42,7 +42,7 @@
                 </form>
             </td>
             <td>
-                <form action="/" method="get">
+                <form action="/groups" method="get">
                     <button type="submit">Group</button>
                 </form>
             </td>

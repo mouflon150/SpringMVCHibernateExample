@@ -1,71 +1,94 @@
 package it.kg.controllers;
 
+import it.kg.models.Company;
+import it.kg.models.Group;
+import it.kg.repositories.CompanyRepository;
 import it.kg.repositories.GroupRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-//@Controller
+@Controller
 public class GroupsController {
-    private final GroupRepository groupsRepository;
 
-    public GroupsController(GroupRepository groupsRepository) {
-        this.groupsRepository = groupsRepository;
+    private final GroupRepository groupRepository;
+
+    private final CompanyRepository companyRepository;
+
+    @Autowired
+    public GroupsController(GroupRepository groupRepository, CompanyRepository companyRepository) {
+        this.groupRepository = groupRepository;
+        this.companyRepository = companyRepository;
+    }
+
+    @GetMapping("/groups")
+    public String findAllGroups(Model model) {
+        model.addAttribute("groups", groupRepository.findAll());
+        return "groups_list";
+    }
+
+    @GetMapping("/findGroup/{id}")
+    public String findGroupById(Model model, @PathVariable int id) {
+        Group group = groupRepository.findById(id);
+        model.addAttribute("group", group);
+        return "find_group";
+    }
+
+    @GetMapping("/groupForm")
+    public String showGroupForm(Model model) {
+        model.addAttribute("company", companyRepository.findAll());
+        return "add_group";
+    }
+
+    @PostMapping("/addGroup")
+    private String saveGroup(@RequestParam("groupName") String groupName,
+                             @RequestParam("dateOfStart") String dateOfStart,
+                             @RequestParam("dateOfFinish") String dateOfFinish,
+                             @RequestParam("id") int id) {
+        Company company = companyRepository.findById(id);
+        Group group = new Group();
+        group.setGroupName(groupName);
+        group.setDateOfStart(dateOfStart);
+        group.setDateOfFinish(dateOfFinish);
+        group.setCompany(company);
+        groupRepository.save(group);
+        return "redirect:/groups";
+    }
+
+    @GetMapping("/deleteGroup/{id}")
+    public String deleteGroupById(@PathVariable int id) {
+        Group group = groupRepository.findById(id);
+        groupRepository.delete(group.getId());
+        return "redirect:/groups";
+    }
+
+    @GetMapping("/editGroup/{id}")
+    public String editGroup(@PathVariable("id") int id, Model model) {
+        Group group = groupRepository.findById(id);
+        model.addAttribute("group", group);
+        return "update_group";
+    }
+
+    @PostMapping("/updateGroup/{id}")
+    public String updateGroup(@RequestParam("groupName") String groupName,
+                              @RequestParam("dateOfStart") String dateOfStart,
+                              @RequestParam("dateOfFinish") String dateOfFinish,
+                              @PathVariable("id") int id) {
+        Group group = new Group();
+        group.setGroupName(groupName);
+        group.setDateOfStart(dateOfStart);
+        group.setDateOfFinish(dateOfFinish);
+        groupRepository.update(id, group);
+        return "redirect:/groups";
+    }
+
+    @GetMapping("/clearGroups")
+    public String clearGroups() {
+        groupRepository.clear();
+        return "redirect:/groups";
     }
 }
-//    @GetMapping("/")
-//    public String findAll(Model model) {
-//        model.addAttribute("companies", groupsRepository.findAll());
-//        return "find companies";
-//    }
-//
-//    @PostMapping("/saveGroups")
-//    private String saveGroups(@RequestParam("groupName") String groupName, @RequestParam("dateOfStart") int dateOfStart, @RequestParam("dateOfFinish") int dateOfFinish) {
-//        Groups groups = new Groups();
-//        groups.setGroupName(groupName);
-//        groups.setDateOfStart(dateOfStart);
-//        groups.setDateOfFinish(dateOfFinish);
-//        groupsRepository.save(groups);
-//        return "redirect:/";
-//    }
-//
-//    @GetMapping("/groupsForm")
-//    public String saveCoursePage() {
-//        return "groups-save";
-//    }
-//
-//
-//    @GetMapping("/deleteGroups/{id}")
-//    public String deleteById(@PathVariable int id) {
-//        Groups groups = groupsRepository.findById(id);
-//        groupsRepository.delete(groups.getId());
-//        return "redirect:/";
-//    }
-//
-//    @GetMapping("/get/by/{id}")
-//    public String getById(Model model, @PathVariable int id) {
-//        Groups groups = groupsRepository.findById(id);
-//        model.addAttribute("groups", groups);
-//        return "find";
-//    }
-//
-//    @GetMapping("/update/{id}")
-//    public String updateCourseForm(@PathVariable("id") int id, Model model) {
-//        Groups groups = groupsRepository.findById(id);
-//        model.addAttribute("groups", groups);
-//        return "update-groups-form";
-//    }
-//
-//    @PostMapping("/real/update/{id}")
-//    public String updateGroups(@RequestParam("groupsName") String groupsName, @RequestParam("dateOfStart") int dateOfStart, @RequestParam("dateOfFinish") int dateOfFinish, @PathVariable int id) {
-//        Groups groups = new Groups();
-//        groups.setGroupName(groupsName);
-//        groups.setDateOfStart(dateOfStart);
-//        groups.setDateOfFinish(dateOfFinish);
-//        groupsRepository.updateGroups(id, groups);
-//        return "redirect:/";
-//    }
-//
-//    @GetMapping("/clear")
-//    public String clear() {
-//        groupsRepository.clear();
-//        return "redirect:/";
-//    }
-//}
