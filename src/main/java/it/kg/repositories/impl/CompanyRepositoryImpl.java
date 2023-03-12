@@ -43,21 +43,6 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 //        session.createQuery("delete from Company where id="+id).executeUpdate();
         Company company = findById(id);
         session.delete(company);
-
-//        Query query = (Query) session.createQuery("FROM Company as p LEFT JOIN FETCH  p.courses WHERE p.id="+id);
-//
-//        // Retrieve record
-//        Company company = (Company) query.uniqueResult();
-//
-//        List<Course> courses = company.getCourses();
-//
-//        // Delete company
-//        session.delete(company);
-//
-//        // Delete associated courses
-//        for (Course course: courses) {
-//            session.delete(course);
-//        }
     }
 
     @Override

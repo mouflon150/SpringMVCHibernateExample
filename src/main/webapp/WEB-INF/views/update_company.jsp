@@ -24,7 +24,7 @@
         <label for="locatedCountry">Located country</label>
         <input type="text" class="form-control" name="locatedCountry" id="locatedCountry" placeholder="Enter country">
     </div>
-    <button type="submit" class="btn btn-primary" value="update_company">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </body>
 </html>

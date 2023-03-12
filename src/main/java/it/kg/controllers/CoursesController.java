@@ -10,10 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/courses")
 public class CoursesController {
 
     private final CourseRepository courseRepository;
+
     private final CompanyRepository companyRepository;
 
     @Autowired
@@ -22,80 +22,66 @@ public class CoursesController {
         this.companyRepository = companyRepository;
     }
 
-
-    @GetMapping()
-    public String findAll(Model model) {
+    @GetMapping("/courses")
+    public String findAllCourses(Model model) {
         model.addAttribute("courses", courseRepository.findAll());
         return "courses_list";
     }
 
     @GetMapping("/findCourse/{id}")
-    public String findById(Model model, @PathVariable int id) {
+    public String findCourseById(Model model, @PathVariable int id) {
         Course course = courseRepository.findById(id);
         model.addAttribute("course", course);
         return "find_course";
     }
 
-    //    @GetMapping("/courseForm")
-//    public String showForm() {
-//        return "add_course";
-//    }
     @GetMapping("/courseForm")
-    public String showForm(Model model) {
-        model.addAttribute("companyId", companyRepository.findAll());
+    public String showCourseForm(Model model) {
+        model.addAttribute("company", companyRepository.findAll());
         return "add_course";
     }
 
-    //    @PostMapping("/addCourse")
-//    private String save(@RequestParam("courseName") String courseName,
-//                        @RequestParam("duration") String duration) {
-//        Course course = new Course();
-//        course.setCourseName(courseName);
-//        course.setDuration(duration);
-//        courseRepository.save(course);
-//        return "redirect:/";
-//    }
     @PostMapping("/addCourse")
-    private String save(@RequestParam("courseName") String courseName,
-                        @RequestParam("duration") String duration,
-                        @RequestParam("id") int id) {
+    private String saveCourse(@RequestParam("courseName") String courseName,
+                              @RequestParam("duration") String duration,
+                              @RequestParam("id") int id) {
         Company company = companyRepository.findById(id);
         Course course = new Course();
         course.setCourseName(courseName);
         course.setDuration(duration);
         course.setCompany(company);
         courseRepository.save(course);
-        return "redirect:/";
+        return "redirect:/courses";
     }
 
     @GetMapping("/deleteCourse/{id}")
-    public String deleteById(@PathVariable int id) {
+    public String deleteCourseById(@PathVariable int id) {
         Course course = courseRepository.findById(id);
         courseRepository.delete(course.getId());
-        return "redirect:/";
+        return "redirect:/courses";
     }
 
-    @GetMapping("/edit/{id}")
-    public String updateCourse(@PathVariable("id") int id, Model model) {
+    @GetMapping("/editCourse/{id}")
+    public String editCourse(@PathVariable("id") int id, Model model) {
         Course course = courseRepository.findById(id);
         model.addAttribute("course", course);
         return "update_course";
     }
 
     @PostMapping("/updateCourse/{id}")
-    public String update(@RequestParam("corseName") String courseName,
+    public String updateCourse(@RequestParam("courseName") String courseName,
                          @RequestParam("duration") String duration,
                          @PathVariable("id") int id) {
         Course course = new Course();
         course.setCourseName(courseName);
         course.setDuration(duration);
         courseRepository.update(id, course);
-        return "redirect:/";
+        return "redirect:/courses";
     }
 
-    @GetMapping("/clear")
-    public String clear() {
+    @GetMapping("/clearCourses")
+    public String clearCourses() {
         courseRepository.clear();
-        return "redirect:/";
+        return "redirect:/courses";
     }
 }

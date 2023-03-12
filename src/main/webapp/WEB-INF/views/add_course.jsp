@@ -15,7 +15,7 @@
 </head>
 <body>
 <h1>Add Course</h1>
-<form action="/courses/addCourse" method="post">
+<form action="/addCourse" method="post">
     <div class="form-group">
         <label for="courseName">Course name</label>
         <input class="form-control" name="courseName" id="courseName" aria-describedby="courseName"
@@ -24,12 +24,12 @@
     <div class="form-group">
         <label for="duration">Duration</label>
         <input type="text" class="form-control" name="duration" id="duration" placeholder="Enter duration">
-        <c:forEach items="${companyId}" var="company">
-            <input type="radio" id="${company.id}" name="id" value="${company.id}">
-            <label for="${company.id}">${company.companyName}</label>
+        <c:forEach items="${company}" var="co">
+            <input type="radio" id="${co.id}" name="id" value="${co.id}">
+            <label for="${co.id}">${co.companyName}</label>
         </c:forEach>
     </div>
-    <button type="submit" class="btn btn-primary" value="add_course">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </body>
 </html>

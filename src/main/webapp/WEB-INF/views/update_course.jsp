@@ -13,11 +13,11 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-<h1>Update Company</h1>
-<form action="/courses/updateCourse/${course.id}" method="post">
+<h1>Update Course</h1>
+<form action="/updateCourse/${course.id}" method="post">
     <div class="form-group">
         <label for="courseName">Course name</label>
-        <input class="form-control" name="companyName" id="courseName" aria-describedby="courseName"
+        <input class="form-control" name="courseName" id="courseName" aria-describedby="courseName"
                placeholder="Enter course name">
     </div>
     <div class="form-group">

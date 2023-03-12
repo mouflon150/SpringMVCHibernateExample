@@ -32,7 +32,7 @@
         <tr>
             <td>${course.id}</td>
             <td>
-                <a href="/courses/findCourse/${course.id}">${course.courseName}</a>
+                <a href="/findCourse/${course.id}">${course.courseName}</a>
             </td>
             <td>${course.duration}</td>
             <td>
@@ -46,10 +46,10 @@
                 <%--                </form>--%>
                 <%--            </td>--%>
             <td>
-                <form action="/courses/edit/${course.id}" method="get">
+                <form action="/editCourse/${course.id}" method="get">
                     <button style="background-color: blue" type="submit">UPDATE</button>
                 </form>
-                <form action="/courses/deleteCourse/${course.id}" method="get">
+                <form action="/deleteCourse/${course.id}" method="get">
                     <button style="background-color: red" type="submit">DELETE</button>
                 </form>
             </td>
@@ -57,11 +57,14 @@
     </c:forEach>
     </tbody>
 </table>
-<form action="${pageContext.request.contextPath}/courses/courseForm" method="get">
-    <button style="background-color: white" type="submit">ADD</button>
+<form action="/courseForm" method="get">
+    <button style="background-color: white" type="submit">ADD-COURSE</button>
 </form>
-<form action="${pageContext.request.contextPath}/courses/clear" method="get">
+<form action="/clearCourses" method="get">
     <button style="background-color: white" type="submit">CLEAR</button>
+</form>
+<form action="/" method="get">
+    <button style="background-color: white" type="submit">BACK</button>
 </form>
 </body>
 </html>

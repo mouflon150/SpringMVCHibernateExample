@@ -44,6 +44,8 @@
     </tr>
     </tbody>
 </table>
-<a href="/">ROLLBACK</a>
+<a href="/companies">
+    <button type="submit">ROLLBACK</button>
+</a>
 </body>
 </html>

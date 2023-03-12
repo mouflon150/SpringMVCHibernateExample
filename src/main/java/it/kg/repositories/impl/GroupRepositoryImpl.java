@@ -38,7 +38,9 @@ public class GroupRepositoryImpl implements GroupRepository {
     @Override
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
-        session.createQuery("delete from Group where id=:groupId").setParameter("groupId", id).executeUpdate();
+//        session.createQuery("delete from Group where id=:groupId").setParameter("groupId", id).executeUpdate();
+        Group group = findById(id);
+        session.delete(group);
     }
 
     @Override

@@ -38,7 +38,9 @@ public class CourseRepositoryImpl implements CourseRepository {
     @Override
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
-        session.createQuery("delete from Course where id=:courseId").setParameter("courseId", id).executeUpdate();
+//        session.createQuery("delete from Course where id=:courseId").setParameter("courseId", id).executeUpdate();
+        Course course = findById(id);
+        session.delete(course);
     }
 
     @Override

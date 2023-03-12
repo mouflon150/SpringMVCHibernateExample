@@ -36,14 +36,16 @@
                 <button type="submit">Teacher</button>
             </form>
         </td>
-<%--        <td>--%>
-<%--            <form action="/" method="get">--%>
-<%--                <button type="submit">Group</button>--%>
-<%--            </form>--%>
-<%--        </td>--%>
+        <%--        <td>--%>
+        <%--            <form action="/" method="get">--%>
+        <%--                <button type="submit">Group</button>--%>
+        <%--            </form>--%>
+        <%--        </td>--%>
     </tr>
     </tbody>
 </table>
-<a href="/courses">ROLLBACK</a>
+<a href="/courses">
+    <button type="submit">ROLLBACK</button>
+</a>
 </body>
 </html>
