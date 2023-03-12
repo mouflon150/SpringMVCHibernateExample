@@ -28,7 +28,7 @@ public class GroupsController {
     @GetMapping("/groups")
     public String findAllGroups(Model model) {
         model.addAttribute("groups", groupRepository.findAll());
-        return "groups_list";
+        return "list_groups";
     }
 
     @GetMapping("/findGroup/{id}")

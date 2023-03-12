@@ -20,7 +20,7 @@ public class CompanyController {
     @GetMapping("/")
     public String findAllCompanies(Model model) {
         model.addAttribute("companies", companyRepository.findAll());
-        return "companies_list";
+        return "list_companies";
     }
 
     @GetMapping("/findCompany/{id}")

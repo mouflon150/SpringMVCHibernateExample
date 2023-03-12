@@ -25,7 +25,7 @@ public class CoursesController {
     @GetMapping("/courses")
     public String findAllCourses(Model model) {
         model.addAttribute("courses", courseRepository.findAll());
-        return "courses_list";
+        return "list_courses";
     }
 
     @GetMapping("/findCourse/{id}")
@@ -70,8 +70,8 @@ public class CoursesController {
 
     @PostMapping("/updateCourse/{id}")
     public String updateCourse(@RequestParam("courseName") String courseName,
-                         @RequestParam("duration") String duration,
-                         @PathVariable("id") int id) {
+                               @RequestParam("duration") String duration,
+                               @PathVariable("id") int id) {
         Course course = new Course();
         course.setCourseName(courseName);
         course.setDuration(duration);

@@ -36,7 +36,7 @@
             </td>
             <td>${course.duration}</td>
             <td>
-                <form action="/" method="get">
+                <form action="/teachers" method="get">
                     <button type="submit">Teacher</button>
                 </form>
             </td>

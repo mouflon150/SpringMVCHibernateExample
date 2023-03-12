@@ -24,7 +24,7 @@
         <label for="duration">Duration</label>
         <input type="text" class="form-control" name="duration" id="duration" placeholder="Enter duration">
     </div>
-    <button type="submit" class="btn btn-primary" value="update_course">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </body>
 </html>

@@ -29,7 +29,7 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${groups}" var="group">
+    <c:forEach items="${groups}" var="gro up">
         <tr>
             <td>${group.id}</td>
             <td>
@@ -60,7 +60,7 @@
     </tbody>
 </table>
 <form action="/groupForm" method="get">
-    <button style="background-color: white" type="submit">ADD-COURSE</button>
+    <button style="background-color: white" type="submit">ADD-GROUP</button>
 </form>
 <form action="/clearGroups" method="get">
     <button style="background-color: white" type="submit">CLEAR</button>

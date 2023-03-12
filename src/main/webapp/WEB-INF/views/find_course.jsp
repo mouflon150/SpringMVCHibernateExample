@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">Course</div>
+    <div class="row">Company</div>
 </div>
 <table class="table">
     <thead class="thead-dark">
@@ -23,24 +23,18 @@
         <th scope="col">Course Name</th>
         <th scope="col">Duration</th>
         <th scope="col">Teacher</th>
-        <%--    <th scope="col">Groups</th>--%>
     </tr>
     </thead>
     <tbody>
     <tr>
         <td>${course.id}</td>
         <td>${course.courseName}</td>
-        <td>${course.duration}</td>
+        <td>${company.duration}</td>
         <td>
-            <form action="/" method="get">
+            <form action="/teachers" method="get">
                 <button type="submit">Teacher</button>
             </form>
         </td>
-        <%--        <td>--%>
-        <%--            <form action="/" method="get">--%>
-        <%--                <button type="submit">Group</button>--%>
-        <%--            </form>--%>
-        <%--        </td>--%>
     </tr>
     </tbody>
 </table>

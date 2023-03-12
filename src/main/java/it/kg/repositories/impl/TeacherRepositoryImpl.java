@@ -38,7 +38,9 @@ public class TeacherRepositoryImpl implements TeacherRepository {
     @Override
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
-        session.createQuery("delete from Teacher where id=:teacherId").setParameter("teacherId", id).executeUpdate();
+//        session.createQuery("delete from Teacher where id=:teacherId").setParameter("teacherId", id).executeUpdate();
+        Teacher teacher = findById(id);
+        session.delete(teacher);
     }
 
     @Override

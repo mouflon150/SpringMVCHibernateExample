@@ -14,37 +14,27 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">Company</div>
+    <div class="row">Teacher</div>
 </div>
 <table class="table">
     <thead class="thead-dark">
     <tr>
         <th scope="col">#</th>
-        <th scope="col">Company Name</th>
-        <th scope="col">Located Country</th>
-        <th scope="col">Courses</th>
-        <th scope="col">Groups</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-        <td>${company.id}</td>
-        <td>${company.companyName}</td>
-        <td>${company.locatedCountry}</td>
-        <td>
-            <form action="/courses" method="get">
-                <button type="submit">Course</button>
-            </form>
-        </td>
-        <td>
-            <form action="/groups" method="get">
-                <button type="submit">Group</button>
-            </form>
-        </td>
+        <td>${teacher.id}</td>
+        <td>${teacher.firstName}</td>
+        <td>${teacher.lastName}</td>
+        <td>${teacher.email}</td>
     </tr>
     </tbody>
 </table>
-<a href="/">
+<a href="/teachers">
     <button type="submit">ROLLBACK</button>
 </a>
 </body>

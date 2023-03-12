@@ -20,7 +20,7 @@ public class Company {
     )
     private List<Course> courses;
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL
-            , fetch = FetchType.EAGER
+            , fetch = FetchType.LAZY
     )
     private List<Group> groups;
 
