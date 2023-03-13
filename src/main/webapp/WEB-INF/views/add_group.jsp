@@ -29,10 +29,22 @@
         <label for="dateOfFinish">Date of finish</label>
         <input type="text" class="form-control" name="dateOfFinish" id="dateOfFinish"
                placeholder="Enter date of finish">
+        <br>
+        <%--        <fieldset>--%>
+        <h5 style="font-family: Calibri,serif">SELECT COMPANY</h5>
         <c:forEach items="${company}" var="co">
-            <input type="radio" id="${co.id}" name="id" value="${co.id}">
+            <input type="radio" id="${co.id}" name="companyId" value="${co.id}">
             <label for="${co.id}">${co.companyName}</label>
         </c:forEach>
+        <%--        </fieldset>--%>
+        <hr>
+        <%--        <fieldset>--%>
+        <h5 style="font-family: Calibri,serif">SELECT COURSE</h5>
+        <c:forEach items="${course}" var="c">
+            <input type="radio" id="${c.id}" name="courseId" value="${c.id}">
+            <label for="${c.id}">${c.courseName}</label>
+        </c:forEach>
+        <%--        </fieldset>--%>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

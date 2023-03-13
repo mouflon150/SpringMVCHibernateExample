@@ -1,8 +1,10 @@
 package it.kg.controllers;
 
 import it.kg.models.Company;
+import it.kg.models.Course;
 import it.kg.models.Group;
 import it.kg.repositories.CompanyRepository;
+import it.kg.repositories.CourseRepository;
 import it.kg.repositories.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,18 +14,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class GroupsController {
 
     private final GroupRepository groupRepository;
 
+    private final CourseRepository courseRepository;
+
     private final CompanyRepository companyRepository;
 
     @Autowired
     public GroupsController(GroupRepository groupRepository,
-                            CompanyRepository companyRepository) {
+                            CompanyRepository companyRepository,
+                            CourseRepository courseRepository) {
         this.groupRepository = groupRepository;
         this.companyRepository = companyRepository;
+        this.courseRepository = courseRepository;
     }
 
     @GetMapping("/groups")
@@ -42,6 +51,7 @@ public class GroupsController {
     @GetMapping("/groupForm")
     public String showGroupForm(Model model) {
         model.addAttribute("company", companyRepository.findAll());
+        model.addAttribute("course", courseRepository.findAll());
         return "add_group";
     }
 
@@ -49,13 +59,19 @@ public class GroupsController {
     private String saveGroup(@RequestParam("groupName") String groupName,
                              @RequestParam("dateOfStart") String dateOfStart,
                              @RequestParam("dateOfFinish") String dateOfFinish,
-                             @RequestParam("id") int id) {
-        Company company = companyRepository.findById(id);
+                             @RequestParam("companyId") int companyId,
+                             @RequestParam("courseId") int courseId
+                             ) {
+        List<Course> courses = new ArrayList<>();
+        Company company = companyRepository.findById(companyId);
+        Course course = courseRepository.findById(courseId);
         Group group = new Group();
         group.setGroupName(groupName);
         group.setDateOfStart(dateOfStart);
         group.setDateOfFinish(dateOfFinish);
         group.setCompany(company);
+        courses.add(course);
+        group.setCourses(courses);
         groupRepository.save(group);
         return "redirect:/groups";
     }

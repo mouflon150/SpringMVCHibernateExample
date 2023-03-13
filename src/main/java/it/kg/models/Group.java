@@ -23,7 +23,12 @@ public class Group {
     private Company company;
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Student> students;
-    @ManyToMany(mappedBy = "groups")
+    @ManyToMany
+    @JoinTable(
+            name = "groups_courses",
+            joinColumns = {@JoinColumn(name = "group_id")},
+            inverseJoinColumns = {@JoinColumn(name = "course_id")}
+    )
     private List<Course> courses;
 
     public Group() {

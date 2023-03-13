@@ -20,12 +20,7 @@ public class Course {
     private Company company;
     @OneToOne(mappedBy = "course", cascade = CascadeType.ALL)
     private Teacher teacher;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "groups_courses",
-            joinColumns = { @JoinColumn(name = "course_id") },
-            inverseJoinColumns = { @JoinColumn(name = "group_id") }
-    )
+    @ManyToMany(mappedBy = "courses", cascade = CascadeType.ALL)
     private List<Group> groups;
 
     public Course() {
