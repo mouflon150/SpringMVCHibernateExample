@@ -10,12 +10,8 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class CompanyController {
 
-    private final CompanyRepository companyRepository;
-
     @Autowired
-    public CompanyController(CompanyRepository companyRepository) {
-        this.companyRepository = companyRepository;
-    }
+    private CompanyRepository companyRepository;
 
     @GetMapping("/")
     public String findAllCompanies(Model model) {
@@ -37,7 +33,7 @@ public class CompanyController {
 
     @PostMapping("/addCompany")
     private String saveCompany(@RequestParam("companyName") String companyName,
-                        @RequestParam("locatedCountry") String locatedCountry) {
+                               @RequestParam("locatedCountry") String locatedCountry) {
         Company company = new Company();
         company.setCompanyName(companyName);
         company.setLocatedCountry(locatedCountry);
@@ -61,8 +57,8 @@ public class CompanyController {
 
     @PostMapping("/updateCompany/{id}")
     public String updateCompany(@RequestParam("companyName") String companyName,
-                         @RequestParam("locatedCountry") String locatedCountry,
-                         @PathVariable("id") int id) {
+                                @RequestParam("locatedCountry") String locatedCountry,
+                                @PathVariable("id") int id) {
         Company company = new Company();
         company.setCompanyName(companyName);
         company.setLocatedCountry(locatedCountry);

@@ -61,8 +61,8 @@
 <form action="/companyForm" method="get">
     <button style="background-color: white" type="submit">ADD-COMPANY</button>
 </form>
-<form action="/clearCompanies" method="get">
-    <button style="background-color: white" type="submit">CLEAR</button>
-</form>
+<%--<form action="/clearCompanies" method="get">--%>
+<%--    <button style="background-color: white" type="submit">CLEAR</button>--%>
+<%--</form>--%>
 </body>
 </html>

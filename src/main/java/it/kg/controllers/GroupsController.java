@@ -20,7 +20,8 @@ public class GroupsController {
     private final CompanyRepository companyRepository;
 
     @Autowired
-    public GroupsController(GroupRepository groupRepository, CompanyRepository companyRepository) {
+    public GroupsController(GroupRepository groupRepository,
+                            CompanyRepository companyRepository) {
         this.groupRepository = groupRepository;
         this.companyRepository = companyRepository;
     }

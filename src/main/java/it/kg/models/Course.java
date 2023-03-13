@@ -22,7 +22,7 @@ public class Course {
     private Teacher teacher;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "courses_groups",
+            name = "groups_courses",
             joinColumns = { @JoinColumn(name = "course_id") },
             inverseJoinColumns = { @JoinColumn(name = "group_id") }
     )

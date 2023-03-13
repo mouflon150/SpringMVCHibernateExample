@@ -29,7 +29,7 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${groups}" var="gro up">
+    <c:forEach items="${groups}" var="group">
         <tr>
             <td>${group.id}</td>
             <td>
@@ -38,7 +38,7 @@
             <td>${group.dateOfStart}</td>
             <td>${group.dateOfFinish}</td>
             <td>
-                <form action="/" method="get">
+                <form action="/students" method="get">
                     <button type="submit">Students</button>
                 </form>
             </td>
@@ -62,9 +62,9 @@
 <form action="/groupForm" method="get">
     <button style="background-color: white" type="submit">ADD-GROUP</button>
 </form>
-<form action="/clearGroups" method="get">
-    <button style="background-color: white" type="submit">CLEAR</button>
-</form>
+<%--<form action="/clearGroups" method="get">--%>
+<%--    <button style="background-color: white" type="submit">CLEAR</button>--%>
+<%--</form>--%>
 <form action="/" method="get">
     <button style="background-color: white" type="submit">BACK</button>
 </form>

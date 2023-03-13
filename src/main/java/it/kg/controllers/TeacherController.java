@@ -1,9 +1,8 @@
 package it.kg.controllers;
 
-import it.kg.models.Company;
+
 import it.kg.models.Course;
 import it.kg.models.Teacher;
-import it.kg.repositories.CompanyRepository;
 import it.kg.repositories.CourseRepository;
 import it.kg.repositories.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +18,11 @@ public class TeacherController {
 
     private final TeacherRepository teacherRepository;
 
-    private CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
 
     @Autowired
-    public TeacherController(TeacherRepository teacherRepository, CourseRepository courseRepository) {
+    public TeacherController(TeacherRepository teacherRepository,
+                             CourseRepository courseRepository) {
         this.teacherRepository = teacherRepository;
         this.courseRepository = courseRepository;
     }

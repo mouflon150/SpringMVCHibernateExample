@@ -51,9 +51,9 @@
 <form action="/teacherForm" method="get">
     <button style="background-color: white" type="submit">ADD-TEACHER</button>
 </form>
-<form action="/clearTeachers" method="get">
-    <button style="background-color: white" type="submit">CLEAR</button>
-</form>
+<%--<form action="/clearTeachers" method="get">--%>
+<%--    <button style="background-color: white" type="submit">CLEAR</button>--%>
+<%--</form>--%>
 <form action="/courses" method="get">
     <button style="background-color: white" type="submit">BACK</button>
 </form>

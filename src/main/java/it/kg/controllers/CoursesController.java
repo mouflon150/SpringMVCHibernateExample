@@ -17,7 +17,8 @@ public class CoursesController {
     private final CompanyRepository companyRepository;
 
     @Autowired
-    public CoursesController(CourseRepository courseRepository, CompanyRepository companyRepository) {
+    public CoursesController(CourseRepository courseRepository,
+                             CompanyRepository companyRepository) {
         this.courseRepository = courseRepository;
         this.companyRepository = companyRepository;
     }

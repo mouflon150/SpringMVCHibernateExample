@@ -9,47 +9,40 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Course Management System</title>
+    <title>Student Management System</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 <div class="container">
-    <div class="row">List Courses</div>
+    <div class="row">List Students</div>
 </div>
 <table class="table">
     <thead class="thead-dark">
     <tr>
         <th scope="col">#</th>
-        <th scope="col">Course Name</th>
-        <th scope="col">Duration</th>
-        <th scope="col">Teacher</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Study Format</th>
         <th scope="col">Actions</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${courses}" var="course">
+    <c:forEach items="${students}" var="student">
         <tr>
-            <td>${course.id}</td>
+            <td>${student.id}</td>
             <td>
-                <a href="/findCourse/${course.id}">${course.courseName}</a>
+                <a href="/findStudent/${student.id}">${student.firstName}</a>
             </td>
-            <td>${course.duration}</td>
+            <td>${student.lastName}</td>
+            <td>${student.email}</td>
+            <td>${student.studyFormat}</td>
             <td>
-                <form action="/teachers" method="get">
-                    <button type="submit">Teacher</button>
-                </form>
-            </td>
-                <%--            <td>--%>
-                <%--                <form action="/" method="get">--%>
-                <%--                    <button type="submit">Group</button>--%>
-                <%--                </form>--%>
-                <%--            </td>--%>
-            <td>
-                <form action="/editCourse/${course.id}" method="get">
+                <form action="/editStudent/${student.id}" method="get">
                     <button style="background-color: blue" type="submit">UPDATE</button>
                 </form>
-                <form action="/deleteCourse/${course.id}" method="get">
+                <form action="/deleteStudent/${student.id}" method="get">
                     <button style="background-color: red" type="submit">DELETE</button>
                 </form>
             </td>
@@ -57,13 +50,13 @@
     </c:forEach>
     </tbody>
 </table>
-<form action="/courseForm" method="get">
-    <button style="background-color: white" type="submit">ADD-COURSE</button>
+<form action="/studentForm" method="get">
+    <button style="background-color: white" type="submit">ADD-TEACHER</button>
 </form>
-<%--<form action="/clearCourses" method="get">--%>
+<%--<form action="/clearStudents" method="get">--%>
 <%--    <button style="background-color: white" type="submit">CLEAR</button>--%>
 <%--</form>--%>
-<form action="/" method="get">
+<form action="/groups" method="get">
     <button style="background-color: white" type="submit">BACK</button>
 </form>
 </body>
